@@ -1,7 +1,7 @@
 # Инструкция к проету: 
 1. git clone в удобную директорию, например - /var/www/book-store
 2. Создать базу для проекта, например - book_store
-3. В .env проекта настроить доступы к базе:
+3. В .env/.env-local проекта настроить доступы к базе:
 - DB_DATABASE=book_store
 - DB_USERNAME=user
 - DB_PASSWORD=pass
@@ -105,3 +105,5 @@ server {
 9. Список жанров со списком книг внутри (с пагинацией), тип запроса `GET`
 - http://book-store.test/api/genres без пагинации
 - http://book-store.test/api/genres?page=2 с пагинацией
+
+## Логирование действий с книгой происходит в /storage/logs/book.log
