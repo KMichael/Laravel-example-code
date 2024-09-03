@@ -55,17 +55,21 @@ class BookController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255|unique:books,title,' . $request->id,
             'edition' => 'required|in:graphic,digital,print',
-            'user_id' => 'required|exists:users,id'
+            'user_id' => 'required|exists:users,id',
+            'genre_ids' => 'required|array|min:1',
+            'genre_ids.*' => 'exists:genres,id'
         ],
-        [
-            'title.unique' => 'The title of the book should be authoritative.',
-        ]);
+            [
+                'title.unique' => 'The title of the book should be authoritative.',
+                'genre_ids.required' => 'You must select at least one genre.',
+            ]);
 
         $book = Book::create($validated);
         $book->genres()->attach($request->genre_ids);
 
         return redirect()->route('books.index')->with('success', 'Book created successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -96,6 +100,10 @@ class BookController extends Controller
             'genre_ids' => 'required|array',
             'genre_ids.*' => 'exists:genres,id',
             'edition' => 'required|in:' . implode(',', array_map(fn($edition) => $edition->value, EditionType::cases())),
+        ],
+            [
+            'title.unique' => 'The title of the book should be authoritative.',
+            'genre_ids.required' => 'You must select at least one genre.',
         ]);
 
         $book->update($validated);

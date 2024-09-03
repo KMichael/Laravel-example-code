@@ -35,7 +35,11 @@ class AuthorController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $request->id,
-            'password' => 'required|nullable|min:6',
+            'password' => 'required|min:6',
+        ],[
+            'name.required' => 'Name is required.',
+            'email.required' => 'Email is required.',
+            'password.required' => 'Password is required.',
         ]);
 
         $author = new User();
@@ -74,6 +78,10 @@ class AuthorController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $author->id,
             'password' => 'sometimes|nullable|min:6',
+        ],
+            [
+            'name.required' => 'Name is required.',
+            'email.required' => 'Email is required.',
         ]);
 
         $author->name = $validatedData['name'];

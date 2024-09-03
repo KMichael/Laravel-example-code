@@ -31,6 +31,8 @@ class GenreController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:genres,name',
+        ],[
+            'name.required' => 'Name is required.'
         ]);
 
         Genre::create($validated);
@@ -60,6 +62,9 @@ class GenreController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:genres,name,' . $genre->id,
+        ],
+            [
+        'name.required' => 'Name is required.'
         ]);
 
         $genre->update($validated);

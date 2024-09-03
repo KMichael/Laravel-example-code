@@ -8,7 +8,7 @@
                         @method('PUT')
 
                         <div class="mb10">
-                            <label for="name">Name</label>
+                            <label for="name">Title</label>
                             <input type="text" name="title" id="title" value="{{ $book->title }}" required autofocus>
                         </div>
                         <div class="form-group mb10">

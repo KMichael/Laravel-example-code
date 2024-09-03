@@ -17,7 +17,7 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="title">Name</label>
+                            <label for="title">Title</label>
                             <input type="text" name="title" id="title" required autofocus class="form-control">
                         </div>
                         <div class="mb-3">
