@@ -5,6 +5,8 @@
 - DB_DATABASE=book_store
 - DB_USERNAME=user
 - DB_PASSWORD=pass
+
+Ко всему прочему генерируем ключ шифрования - `php artisan key:generate`
 4. Настроить сервер, например nginx
 ```
 server {
@@ -44,8 +46,16 @@ server {
 127.0.0.1	book-store.test
 ```
 6. В проекте - `composer install` для установки необходимых зависимостей
-7. `npm run build` - Для сборки стилей и скриптов проекта
-8. `php artisan migrate --seed` - для выполнения всех миграций и заполнение базы рандомными данными
+7. В проекте - `npm install` для установки необходимых пакетов для работы проекта
+8. `npm run build` - Для сборки стилей и скриптов проекта
+9. `php artisan migrate --seed` - для выполнения всех миграций и заполнение базы рандомными данными
+
+# Если возникают ошибки с логами, делаем следующее - 
+
+```
+sudo chown -R www-data:www-data storage
+sudo chmod -R 775 storage
+```
 
 Вход в админку через `Log in` в правом верхнем углу дефолтной страницы начального проекта Laravel
 
