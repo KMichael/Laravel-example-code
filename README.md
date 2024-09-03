@@ -75,6 +75,7 @@ sudo chmod -R 775 storage
 В ответ получаем токен, который будем использовать дальше
 
 2. Обновление данных книги, авторизация под автором книги обязательна, тип запроса `PUT`, json указываем вида:
+- http://book-store.test/api/books/{book}
 ```
 {
     "title": "new title",
@@ -84,11 +85,12 @@ sudo chmod -R 775 storage
 В заголовки в `key` указываем `Authorization`, в `Value` `Bearer {token}`
 
 3. Удаление книги, авторизация под автором книги обязательна, тип запроса `DELETE`
-- http://book-store/api/books/{book}
+- http://book-store.test/api/books/{book}
 
 В заголовки в `key` указываем `Authorization`, в `Value` `Bearer {token}`
 
 4. Обновление данных автора, авторизация под автором обязательна, тип запроса `PUT`, json указываем вида:
+- http://book-store.test/api/user
 ```
 {
     "name": "new name",

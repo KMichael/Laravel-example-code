@@ -27,7 +27,7 @@ class ApiAuthorController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $author->id,
-            'password' => 'sometimes|nullable|min:6',
+            'password' => 'sometimes|required|min:6',
         ]);
 
         $author->name = $validated['name'];
