@@ -11,7 +11,7 @@ class ApiBookController extends Controller
 {
     public function index()
     {
-        $books = Book::with('author', 'genres')->paginate(2);
+        $books = Book::with('author', 'genres')->paginate(10);
         return response()->json($books);
     }
 

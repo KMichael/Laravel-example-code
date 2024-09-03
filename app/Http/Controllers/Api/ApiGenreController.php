@@ -10,7 +10,7 @@ class ApiGenreController extends Controller
 {
     public function index()
     {
-        $books = Genre::with('books')->paginate(2);
+        $books = Genre::with('books')->paginate(5);
         return response()->json($books);
     }
 }
